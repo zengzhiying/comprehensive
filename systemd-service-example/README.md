@@ -4,7 +4,7 @@
 
 ## 1.程序目录和 service 设置
 
-将 service 文件、安装脚本 `install-service.sh` 放到和发布的程序同一级目录下，假设程序命令为 my-program，前台启动命令假设如下：
+将 service 文件、安装脚本 `install-service.sh` 放到和发布的程序同一级目录下，假设程序名称为 my-program，前台启动命令假设如下：
 
 ```shell
 ./my-program --conf ./config.yaml
@@ -27,7 +27,7 @@ ExecStart={{ MY_PROGRAM_HOME }}/my-program --conf {{ MY_PROGRAM_HOME }}/config.y
 
 ```
 
-首先是 `Description` 根据实际的修改即可。然后如果程序是前台运行，则保持 `Type=simple` 不变，如果程序是以守护进程方式后台运行的话，那么可以修改 `Type=forking` 这样即可正常追踪程序的状态。最后就是 `ExecStart` 指定程序的启动命令，一定要使用绝对路径启动，在这里使用变量 {{ MY_PROGRAM_HOME }} 替代当前的目录，这个变量保持不变即可，只替换具体的可执行文件和配置文件的相对路径即可。最后修改完成后保存。
+首先是 `Description` 根据实际的修改即可。然后如果程序是前台运行，则保持 `Type=simple` 不变，如果程序是以守护进程方式后台运行的话，那么可以修改 `Type=forking` 这样即可正常追踪程序的状态。最后就是 `ExecStart` 指定程序的启动命令，一定要使用绝对路径启动，在这里使用变量 `{{ MY_PROGRAM_HOME }}` 替代当前的目录，这个变量保持不变，只替换具体的可执行文件和配置文件的相对路径即可。最后修改完成后保存。
 
 ## 2.服务安装脚本修改
 
