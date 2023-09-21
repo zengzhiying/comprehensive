@@ -1,0 +1,18 @@
+[Unit]
+Description=my-program
+After=network.target local-fs.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart={{ MY_PROGRAM_HOME }}/my-program --conf {{ MY_PROGRAM_HOME }}/config.yaml
+TimeoutSec=90s
+RestartSec=5s
+Restart=always
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+
+[Install]
+WantedBy=multi-user.target
