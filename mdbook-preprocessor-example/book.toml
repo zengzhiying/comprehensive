@@ -1,0 +1,7 @@
+[book]
+title = "mdbook-preprocessor-example"
+authors = ["monchickey"]
+language = "en"
+
+[preprocessor.strip-front-matter]
+command = "python3 preprocessors/strip_front_matter.py"
