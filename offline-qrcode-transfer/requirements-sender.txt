@@ -1,0 +1,7 @@
+# 内网（发送端）依赖 —— 只有一个纯 Python 包
+#
+#   pip install -r requirements-sender.txt
+#
+# tkinter 是 Python 标准库的一部分（Windows 官方安装包自带），不需要 pip 安装。
+# 二维码是用 tkinter 画布直接画的，所以不需要 Pillow。
+qrcode>=7.3

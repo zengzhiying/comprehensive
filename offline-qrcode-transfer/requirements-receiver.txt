@@ -1,0 +1,20 @@
+# 外网（接收端）依赖
+#
+#   pip install -r requirements-receiver.txt
+#
+# tkinter 是 Python 标准库的一部分（Windows 官方安装包自带），不需要 pip 安装。
+#
+# pyzbar 是主力解码器，别省：实测 OpenCV 对干净的二维码图像都会随机解码失败
+# （v15 / v35 失败，v21 / v26 / v31 成功），而 pyzbar 在所有版本上 100% 成功。
+# Windows 上 pyzbar 的 wheel 自带 zbar 动态库，直接装即可；
+# Linux 上还需要 apt install libzbar0。
+pyzbar>=0.1.9
+
+# 截屏。没有它也能退化成 Pillow 的 ImageGrab，但 mss 更快、对多显示器支持更好。
+mss>=9.0.1
+
+# 图像处理 + 界面预览。
+pillow>=9.0.0
+
+# 解码兜底。用 headless 版即可（本程序不用 cv2 的窗口功能），体积更小。
+opencv-python-headless>=4.5.0
